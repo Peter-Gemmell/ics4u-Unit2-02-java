@@ -9,8 +9,8 @@
 
 import java.util.Scanner;
 /**
-* Class Main.
-*/
+ * Class Main.
+ */
 
 final class Main {
     /**
@@ -36,15 +36,27 @@ final class Main {
         final MrCoxallStack aStack = new MrCoxallStack();
         final int tempElement;
 
-        System.out.println("Enter a number: ");
-        final int userNumber = myObj.nextInt();
-        aStack.push(userNumber);
+        System.out.print("Enter a number (! to leave loop): ");
+        while (myObj.hasNext()) {
+            final String myNewLine = myObj.nextLine();
+            if ("!".equals(myNewLine)) {
+                break;
+            }
 
-        aStack.showStack();
+            try {
+                final int userNumber = Integer.parseInt(myNewLine);
+                aStack.push(userNumber);
+            } catch (NumberFormatException ex) {
+                System.out.println(myNewLine + " is NaN");
+            }
+            System.out.print("Enter a number (! to leave loop):");
+        }
+
+        System.out.println(aStack.getStack());
 
         System.out.println("Pop element.");
         tempElement = aStack.pop();
-        aStack.showStack();
+        System.out.println(aStack.getStack());
 
         System.out.println("\nDone.");
     }

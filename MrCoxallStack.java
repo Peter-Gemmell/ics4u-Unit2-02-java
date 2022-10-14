@@ -24,14 +24,11 @@ public class MrCoxallStack {
     /**
     * Getter.
     * The showStack method.
+    *
+    * @return regets stack and returns it
     */
-    public void showStack() {
-        // print out the ShowStack
-        System.out.println("\nThe stack list.");
-        for (Integer aSingleElement : theStack) {
-            System.out.println(aSingleElement);
-        }
-        System.out.println("End of stack list.\n");
+    public ArrayList<Integer> getStack() {
+        return theStack;
     }
 
     /**
@@ -40,7 +37,8 @@ public class MrCoxallStack {
     * @param pushNumber The int to be added to the stack
     */
     public void push(final int pushNumber) {
-        theStack.add(0, pushNumber);
+        final int index = theStack.size();
+        theStack.add(index, pushNumber);
     }
     /**
     * The pop() function.
@@ -49,6 +47,6 @@ public class MrCoxallStack {
     */
 
     public int pop() {
-        return theStack.remove(0);
+        return theStack.remove(theStack.size() - 1);
     }
 }
